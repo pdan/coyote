@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coyote | Signup</title>
+    <link type="text/css" rel="stylesheet" href="/css/build.css" />
+</head>
+
+
+<body>
+    <div id="preloader" class="container" ng-show="!loaded">
+        <div class="row">
+            <div class="text-center col-md-4 col-md-offset-4">
+                <h1>WAIT</h1>
+            </div>
+        </div>
+    </div>
+    <div id="login" class="container" ng-controller="UserController" ng-show="!loggedin" style="display: none">
+        <div class="row">
+            <div class="well col-md-4 col-md-offset-4">
+                <h3>Signup for Coyote</h3>
+                <form class="" action="/signup" method="post">
+                    <div class="form-control-wrapper">
+                        <input type="email" name="email" class="form-control empty">
+                        <div class="floating-label">Email</div>
+                        <span class="material-input"></span>
+                    </div>
+                    <div class="form-control-wrapper">
+                        <input type="password" name="password" class="form-control empty">
+                        <div class="floating-label">Password</div>
+                        <span class="material-input"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-raised pull-right">Signup</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/js/build.min.af78bffc.js"></script>
+</body>
+
+</html>

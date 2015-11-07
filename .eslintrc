@@ -1,0 +1,17 @@
+{
+  "ecmaFeatures": {},
+  "env": {
+    "browser": true,
+    "node": true,
+    "amd": true,
+    "es6": true,
+    "jquery": true
+  },
+  "rules": {
+    "quotes": [2, "single"],
+    "strict": [0],
+    "no-unused-vars": [0],
+    "new-cap": [0],
+    "no-underscore-dangle": [0]
+  }
+}

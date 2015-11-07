@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coyote</title>
+    <link type="text/css" rel="stylesheet" href="/css/build.css" />
+</head>
+
+
+<body>
+    <div id="preloader" class="container" ng-show="!loaded">
+        <div class="row">
+            <div class="text-center col-md-4 col-md-offset-4">
+                <h1>WAIT</h1>
+            </div>
+        </div>
+    </div>
+    <div id="login" class="container" ng-controller="UserController" ng-show="!loggedin" style="display: none">
+        <div class="row">
+            <div class="well col-md-4 col-md-offset-4">
+                <h3>Login for Coyote</h3>
+                <div class="alert alert-dismissable alert-danger" ng-show="loginFail">
+                    <button type="button" class="close" ng-click="loginFail = false">×</button>
+                    <strong>Oh!</strong> {{loginFail}}
+                </div>
+                <form ng-submit="authUser()">
+                    <div class="form-control-wrapper">
+                        <input type="email" class="form-control empty" ng-model="email">
+                        <div class="floating-label">Email</div>
+                        <span class="material-input"></span>
+                    </div>
+                    <div class="form-control-wrapper">
+                        <input type="password" class="form-control empty" ng-model="password">
+                        <div class="floating-label">Password</div>
+                        <span class="material-input"></span>
+                    </div>
+                    <button type="submit" name="button" class="btn btn-primary btn-raised pull-right">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="app" class="container" ng-controller="AppController" ng-show="loggedin" style="display: none" ng-init="page = 'zones'">
+        <div class="row">
+            <div class="col-sm-3">
+                <nav>
+                    <ul class="list-group">
+                        <li class="withripple list-group-item" ng-click="page = 'zones'">Zones List</li>
+                        <li class="withripple list-group-item" ng-click="page = 'settings'">Settings</li>
+                        <li class="withripple list-group-item" ng-click="signOut()">Sign Out</li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-sm-9" ng-show="page === 'zones'">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h2>Zones List</h2>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="pull-right">
+                            <button class="btn btn-info btn-raised" ng-click="refreshZonesList()" ng-disabled="formDisable">Refresh zone list</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row" ng-repeat="zone in zones track by $index">
+                        <h3>{{zone.name}}</h3>
+                        <div class="form-group" ng-repeat="record in zone.records track by $index" ng-if="record.type === 'A'">
+                            <div class="togglebutton">
+                                <label>
+                                    <input type="checkbox" ng-model="record.ddns" ng-change="changeRecordStatus(record)"> {{record.name}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" name="button" class="btn btn-primary btn-raised" ng-click="saveZonesList()" ng-disabled="formDisable">SAVE</button>
+            </div>
+            <div class="col-sm-4 col-xs-8" ng-show="page === 'settings'">
+                <h2>Settings</h2>
+                <form ng-submit="saveSettings()">
+                    <div class="form-control-wrapper">
+                        <input type="email" class="form-control" ng-model="email" ng-disabled="formDisable">
+                        <div class="floating-label">Email</div>
+                        <span class="material-input"></span>
+                    </div>
+                    <div class="form-control-wrapper">
+                        <input type="text" class="form-control" ng-model="apiKey" ng-disabled="formDisable">
+                        <div class="floating-label">API Key</div>
+                        <span class="material-input"></span>
+                    </div>
+                    <div class="form-control-wrapper">
+                        <input type="text" class="form-control" ng-model="time" ng-disabled="formDisable">
+                        <div class="floating-label">Check every x second</div>
+                        <span class="material-input"></span>
+                    </div>
+                    <div class="form-control-wrapper">
+                        <input type="text" class="form-control" ng-model="ipServer" ng-disabled="formDisable">
+                        <div class="floating-label">Server URL to give external ip. Example: http://ipinfo.io/ip</div>
+                        <span class="material-input"></span>
+                    </div>
+                    <button type="submit" name="button" class="btn btn-primary btn-raised" ng-disabled="formDisable">SAVE</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/js/build.min.af78bffc.js"></script>
+</body>
+
+</html>

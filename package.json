@@ -1,0 +1,54 @@
+{
+  "name": "coyote-ir",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "jspm": {
+    "directories": {
+      "baseURL": "public",
+      "packages": "public/packages"
+    },
+    "dependencies": {
+      "angular": "github:angular/bower-angular@^1.4.7",
+      "bootstrap": "github:twbs/bootstrap@^3.3.5",
+      "bootstrap-material": "github:fezVrasta/bootstrap-material-design@^0.3.0",
+      "font": "github:systemjs/system-font@^0.1.0",
+      "socket.io-client": "github:socketio/socket.io-client@^1.3.7",
+      "webfont": "github:components/webfontloader@^1.6.3"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-cssmin": "^0.14.0",
+    "grunt-contrib-uglify": "^0.10.0",
+    "grunt-filerev": "^2.3.1",
+    "grunt-html-build": "^0.5.2",
+    "grunt-shell": "^1.1.2",
+    "jspm": "^0.16.13",
+    "load-grunt-tasks": "^3.3.0"
+  },
+  "dependencies": {
+    "async": "^1.5.0",
+    "body-parser": "^1.14.1",
+    "consolidate": "^0.13.1",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "jsonwebtoken": "^5.4.0",
+    "request": "^2.65.0",
+    "secure-password": "^0.1.2",
+    "socket.io": "^1.3.7",
+    "socketio-jwt": "^4.3.2",
+    "tingodb": "^0.4.2"
+  }
+}

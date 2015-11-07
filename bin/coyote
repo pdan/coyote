@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+
+process.title = 'coyote';
+
+var fs = require('fs');
+var path = require('path');
+var Tingodb = require('tingodb')();
+var CloudFlare = require('../engine/cloudflare');
+var databasePath = path.resolve(__dirname, '../database');
+
+// Create directory path if it doesn't exist
+if (!fs.existsSync(databasePath)) {
+  fs.mkdirSync(databasePath, 0766, function(err) {
+    if (err) {
+      throw err;
+    }
+  });
+}
+
+// Init database object
+var db = new Tingodb.Db(databasePath, {});
+var cf = new CloudFlare(db);
+
+cf.updateAllDnsRecords();
+
+if (process.argv[2] === '--continuous' || process.argv[2] === '-c') {
+    cf.setTimer();
+}

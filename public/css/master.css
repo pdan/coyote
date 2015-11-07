@@ -1,0 +1,43 @@
+body {
+  padding-top: 50px;
+}
+li.withripple.list-group-item {
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 3px;
+  text-align: right;
+}
+#login .well {
+  overflow: auto;
+}
+#login h2 {
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 400;
+}
+#login .inputs {
+  width: 80%;
+}
+.form-control-wrapper {
+  margin: 30px 0;
+}
+#preloader h1 {
+  animation-name: preloader;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: reverse;
+  animation-timing-function: ease-out;
+  margin-top: 35vh;
+}
+@keyframes preloader {
+  0% {
+    opacity: 0
+  }
+  80% {
+    opacity: 1
+  }
+  100% {
+    opacity: 0
+  }
+}
